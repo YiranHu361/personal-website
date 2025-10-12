@@ -28,11 +28,11 @@ const WordleSolver = () => {
   // Check backend health via API
   const checkBackendHealth = async () => {
     try {
-      const response = await fetch('/api/start-backend', {
-        method: 'GET'
+      const response = await fetch(`${getBackendUrl()}/api/wordle/health`, {
+        method: 'GET',
+        signal: AbortSignal.timeout(3000)
       })
-      const data = await response.json()
-      return data.success
+      return response.ok
     } catch (error) {
       return false
     }
@@ -49,27 +49,18 @@ const WordleSolver = () => {
     setStartupAttempts(prev => prev + 1)
 
     try {
-      const response = await fetch('/api/start-backend', {
-        method: 'POST'
-      })
-      const data = await response.json()
-      
-      if (data.success) {
-        // Wait for backend to start
-        await new Promise(resolve => setTimeout(resolve, 8000))
-        
-        const isHealthy = await checkBackendHealth()
-        if (isHealthy) {
-          setBackendStatus('running')
-        } else {
-          // Retry after delay
-          setTimeout(() => startBackend(), 3000)
-        }
+      // Check if Railway backend is available
+      const isHealthy = await checkBackendHealth()
+      if (isHealthy) {
+        setBackendStatus('running')
+        setError('')
       } else {
-        setTimeout(() => startBackend(), 3000)
+        setBackendStatus('error')
+        setError('Railway backend is not responding. Please try again later.')
       }
-    } catch (error) {
-      setTimeout(() => startBackend(), 3000)
+    } catch (err) {
+      setBackendStatus('error')
+      setError('Failed to connect to Railway backend.')
     }
   }
 
@@ -79,8 +70,10 @@ const WordleSolver = () => {
       const isHealthy = await checkBackendHealth()
       if (isHealthy) {
         setBackendStatus('running')
+        setError('')
       } else {
-        startBackend()
+        setBackendStatus('error')
+        setError('Railway backend is not responding. Please try again later.')
       }
     }
     
