@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/wordle")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "https://*.vercel.app", "https://*.netlify.app"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS}, allowedHeaders = "*")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "https://yiranhu.com", "https://*.vercel.app", "https://*.netlify.app"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS}, allowedHeaders = "*")
 public class WordleController {
 
     @Autowired
