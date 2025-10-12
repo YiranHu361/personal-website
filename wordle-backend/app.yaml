@@ -1,0 +1,16 @@
+name: wordle-backend
+services:
+  - name: api
+    source_dir: .
+    github:
+      repo: your-username/your-repo
+      branch: main
+    run_command: mvn spring-boot:run
+    environment_slug: java
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: PORT
+        value: "8080"
