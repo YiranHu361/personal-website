@@ -4,10 +4,8 @@ import path from 'path'
 
 export async function POST(request: NextRequest) {
   try {
-    // Get backend URL from environment or default to localhost
-    // Use Railway backend URL for production
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 
-      (process.env.NODE_ENV === 'production' ? 'https://wordle-backend-production-b789.up.railway.app' : 'http://localhost:8080')
+    // Get backend URL from environment or default to Railway backend
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://wordle-backend-production-b789.up.railway.app'
     
     // Check if backend is already running
     const healthCheck = await fetch(`${backendUrl}/api/wordle/health`, {
@@ -53,10 +51,8 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    // Get backend URL from environment or default to localhost
-    // Use Railway backend URL for production
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 
-      (process.env.NODE_ENV === 'production' ? 'https://wordle-backend-production-b789.up.railway.app' : 'http://localhost:8080')
+    // Get backend URL from environment or default to Railway backend
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://wordle-backend-production-b789.up.railway.app'
     
     // Check backend health
     const response = await fetch(`${backendUrl}/api/wordle/health`, {
