@@ -21,6 +21,10 @@ const WordleSolver = () => {
 
   // Get backend URL from environment or default to localhost
   const getBackendUrl = () => {
+    // Use Railway backend URL for production
+    if (typeof window !== 'undefined' && window.location.hostname === 'yiranhu.com') {
+      return 'https://wordle-backend-production-b789.up.railway.app'
+    }
     return process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080'
   }
 
