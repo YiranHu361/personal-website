@@ -21,18 +21,19 @@ const WordleSolver = () => {
 
   // Get backend URL from environment or default to localhost
   const getBackendUrl = () => {
-    // Use Railway backend URL for production
-    return process.env.NEXT_PUBLIC_BACKEND_URL || 'https://wordle-backend-production-b789.up.railway.app'
+    // Use Next.js API proxy to avoid CORS issues
+    return '/api/wordle-proxy'
   }
 
   // Check backend health via API
   const checkBackendHealth = async () => {
     try {
-      const response = await fetch(`${getBackendUrl()}/api/wordle/health`, {
+      const response = await fetch(getBackendUrl(), {
         method: 'GET',
         signal: AbortSignal.timeout(3000)
       })
-      return response.ok
+      const data = await response.json()
+      return data.success
     } catch (error) {
       return false
     }
@@ -96,7 +97,7 @@ const WordleSolver = () => {
     setResult(null)
 
     try {
-      const response = await fetch(`${getBackendUrl()}/api/wordle/solve`, {
+      const response = await fetch(getBackendUrl(), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
