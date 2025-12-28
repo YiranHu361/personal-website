@@ -13,7 +13,7 @@ const About = () => {
     {
       icon: Heart,
       title: 'Problem Solving',
-      description: 'I did a lot of competitive programming / math olympiad during my high school years.'
+      description: 'I did a lot of competitive programming / math olympiad.'
     },
     {
       icon: Coffee,
@@ -47,7 +47,7 @@ const About = () => {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             I'm pursuing a degree in Mathematics and Computer Science at UC Berkeley. 
-            In my free time, I enjoy playing Rubik's Cube, tennis, squash, and playing guitar. 
+            In my free time, I enjoy playing Rubik's Cube, tennis, squash, and building tools. 
           </p>
         </motion.div>
 
