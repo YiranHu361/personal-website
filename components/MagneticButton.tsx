@@ -32,7 +32,7 @@ export default function MagneticButton({ label, variant = 'light', className = '
   const baseClasses = 'relative border border-[#111] px-5 py-3 text-xs uppercase tracking-[0.3em] hard-shadow-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4cc9f0]'
 
   const variantClasses = variant === 'dark'
-    ? 'bg-white text-[#111] hover:bg-[#111] hover:text-[#f8f9fa]'
+    ? 'bg-[#111] text-[#f8f9fa] hover:bg-[#f8f9fa] hover:text-[#111]'
     : 'bg-white text-[#111] hover:bg-[#111] hover:text-[#f8f9fa]'
 
   return (

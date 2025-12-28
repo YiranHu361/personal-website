@@ -5,6 +5,28 @@ interface OpenAIRequestBody {
   message: string
 }
 
+// Simple in-memory rate limiting (resets on server restart)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
+const RATE_LIMIT = 10 // requests per window
+const RATE_WINDOW = 60 * 1000 // 1 minute in ms
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const record = rateLimitMap.get(ip)
+
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_WINDOW })
+    return false
+  }
+
+  if (record.count >= RATE_LIMIT) {
+    return true
+  }
+
+  record.count++
+  return false
+}
+
 const SYSTEM_PROMPT = `You are Yiran Hu. You represent me on my personal website and respond as me in first person ("I"). Your job is to help visitors quickly understand who I am, what I'm building, what I'm learning, and how to collaborate with me.
 
 ## Identity & Current Focus
@@ -45,6 +67,7 @@ If someone asks for demos, features, tech stack, or what's next, answer concrete
 - Be concise by default (2–4 sentences), but go deeper when asked.
 - Avoid marketing fluff. Prefer concrete examples, tradeoffs, and specifics.
 - If a question is ambiguous, ask one clarifying question and also provide a best-guess answer.
+- IMPORTANT: Do NOT use any markdown formatting in your responses. No **bold**, no *italics*, no bullet points with -, no headers with #. Write in plain text only as the output is displayed in a terminal that does not render markdown.
 
 ## What You Should Do
 You can help visitors:
@@ -77,15 +100,32 @@ Whenever appropriate, end with one helpful next step:
 
 export async function POST(request: Request) {
   try {
+    // Get client IP for rate limiting
+    const forwarded = request.headers.get('x-forwarded-for')
+    const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown'
+
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { reply: 'Too many requests. Please wait a moment.' },
+        { status: 429 }
+      )
+    }
+
     const body = (await request.json()) as OpenAIRequestBody
 
-    if (!body?.message) {
+    if (!body?.message || typeof body.message !== 'string') {
       return NextResponse.json({ reply: 'No query received.' }, { status: 400 })
     }
 
+    // Limit message length to prevent abuse
+    const message = body.message.slice(0, 500)
+
     const apiKey = process.env.OPENAI_API_KEY
     if (!apiKey) {
-      return NextResponse.json({ reply: 'Missing OPENAI_API_KEY.' }, { status: 500 })
+      return NextResponse.json(
+        { reply: 'Service temporarily unavailable.' },
+        { status: 500 }
+      )
     }
 
     const openai = new OpenAI({ apiKey })
@@ -94,7 +134,7 @@ export async function POST(request: Request) {
       model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: body.message }
+        { role: 'user', content: message }
       ],
       max_tokens: 250,
       temperature: 0.7,
@@ -104,7 +144,11 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ reply })
   } catch (error) {
-    console.error('OpenAI API error:', error)
-    return NextResponse.json({ reply: 'OpenAI request failed. Check API key.' }, { status: 500 })
+    // Log error without potentially sensitive details
+    console.error('OpenAI API error occurred')
+    return NextResponse.json(
+      { reply: 'Request failed. Please try again.' },
+      { status: 500 }
+    )
   }
 }

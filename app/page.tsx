@@ -728,7 +728,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-[10px] uppercase tracking-[0.3em]">Location</p>
-                      <p className="text-sm font-bold">San Francisco, CA</p>
+                      <p className="text-sm font-bold">Berkeley, CA</p>
                     </div>
                   </motion.div>
                 </div>

@@ -34,7 +34,7 @@ const INK_COLORS = [
   '#480ca8', // Indigo
 ]
 
-// Generate smooth SVG path using Catmull-Rom spline for fountain pen effect
+// Generate smooth SVG path using quadratic bezier curves for fountain pen effect
 function getSmoothPath(points: InkPoint[]): string {
   if (points.length < 2) return ''
   if (points.length === 2) {
@@ -45,7 +45,6 @@ function getSmoothPath(points: InkPoint[]): string {
 
   // Use quadratic bezier curves for smooth interpolation
   for (let i = 1; i < points.length - 1; i++) {
-    const prev = points[i - 1]
     const curr = points[i]
     const next = points[i + 1]
 
@@ -74,6 +73,7 @@ export default function Cursor() {
   const [strokes, setStrokes] = useState<InkStroke[]>([])
   const currentStrokeRef = useRef<InkStroke | null>(null)
   const strokeIdRef = useRef(0)
+  const hasStrokes = strokes.length > 0
 
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
@@ -106,7 +106,7 @@ export default function Cursor() {
 
   // Fade out strokes smoothly
   useEffect(() => {
-    if (strokes.length === 0) return
+    if (!hasStrokes) return
 
     const fadeInterval = setInterval(() => {
       setStrokes(prev => {
@@ -121,7 +121,7 @@ export default function Cursor() {
     }, 30)
 
     return () => clearInterval(fadeInterval)
-  }, [strokes.length > 0])
+  }, [hasStrokes])
 
   useEffect(() => {
     const media = window.matchMedia('(pointer: fine)')
@@ -153,20 +153,18 @@ export default function Cursor() {
             Math.abs(currentX - lastPoint.x) > 2 ||
             Math.abs(currentY - lastPoint.y) > 2) {
 
-          currentStrokeRef.current.points.push({ x: currentX, y: currentY })
+          // Create new points array instead of mutating
+          const newPoints = [...currentStrokeRef.current.points, { x: currentX, y: currentY }]
+          currentStrokeRef.current = { ...currentStrokeRef.current, points: newPoints }
 
           // Update strokes state to trigger re-render
-          setStrokes(prev => {
-            const existing = prev.find(s => s.id === currentStrokeRef.current?.id)
-            if (existing) {
-              return prev.map(s =>
-                s.id === currentStrokeRef.current?.id
-                  ? { ...s, points: [...currentStrokeRef.current!.points] }
-                  : s
-              )
-            }
-            return prev
-          })
+          setStrokes(prev =>
+            prev.map(s =>
+              s.id === currentStrokeRef.current?.id
+                ? { ...s, points: newPoints }
+                : s
+            )
+          )
         }
       }
     }

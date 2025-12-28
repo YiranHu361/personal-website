@@ -1,23 +1,29 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
-const words = ['things', 'apps', 'websites', 'experiences', 'interfaces']
+const words = ['things', 'apps', 'websites', 'experiences', 'interfaces', 'UI/UX', 'solutions', 'tools']
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'
 
 export default function ScrambleText() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayText, setDisplayText] = useState(words[0])
   const [isScrambling, setIsScrambling] = useState(false)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const scrambleToWord = useCallback((targetWord: string) => {
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+
     setIsScrambling(true)
     const duration = 500 // 0.5 seconds
     const frameRate = 30 // updates per second
     const totalFrames = (duration / 1000) * frameRate
     let frame = 0
 
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       frame++
       const progress = frame / totalFrames
 
@@ -34,13 +40,23 @@ export default function ScrambleText() {
       setDisplayText(scrambled)
 
       if (frame >= totalFrames) {
-        clearInterval(interval)
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current)
+          intervalRef.current = null
+        }
         setDisplayText(targetWord)
         setIsScrambling(false)
       }
     }, 1000 / frameRate)
+  }, [])
 
-    return () => clearInterval(interval)
+  // Cleanup interval on unmount
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
   }, [])
 
   useEffect(() => {
@@ -61,7 +77,6 @@ export default function ScrambleText() {
           className="italic"
           style={{
             fontFamily: 'Georgia, "Times New Roman", serif',
-            fontStyle: 'italic',
             letterSpacing: '0.02em'
           }}
         >
