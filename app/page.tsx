@@ -85,7 +85,7 @@ export default function Home() {
   ]
 
   const interests = [
-    { icon: Heart, title: 'Problem Solving', description: 'Competitive programming / math olympiad during high school.' },
+    { icon: Heart, title: 'Problem Solving', description: 'I did a lot of competitive programming / math olympiad.' },
     { icon: Coffee, title: 'Learning & Giving', description: 'I enjoy learning new things, and teaching others.' },
     { icon: Music, title: 'Creative Expression', description: 'Music and sports fuel my creativity.' },
     { icon: Gamepad2, title: 'Strategic Thinking', description: 'Played a lot of Clash Royale, fairly good at it.' },
@@ -331,7 +331,7 @@ export default function Home() {
               >
                 <p className="text-sm leading-relaxed mb-4">
                   I'm pursuing a degree in Mathematics and Computer Science at UC Berkeley.
-                  In my free time, I enjoy playing Rubik's Cube, tennis, squash, and playing guitar.
+                  In my free time, I enjoy playing Rubik's Cube, tennis, squash, and building tools.
                 </p>
                 <p className="text-sm leading-relaxed">
                   I love running, biking, and all kinds of racquet sports. I also love to play guitar; I especially enjoy Jay Chou's music.
