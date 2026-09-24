@@ -8,6 +8,7 @@ import Cursor from '@/components/Cursor'
 import MagneticButton from '@/components/MagneticButton'
 import Terminal from '@/components/Terminal'
 import ScrambleText from '@/components/ScrambleText'
+import ResumeCounter from '@/components/ResumeCounter'
 
 // Physics-based hover animation variants
 const hoverFloat = {
@@ -108,8 +109,8 @@ export default function Home() {
   const projects: ProjectCard[] = [
     {
       name: 'Ambees',
-      summary: 'Early-career recruiting platform I co-founded and lead as CTO. Features AI voice onboarding, multi-stage job matching, and resumable application automation for Greenhouse, Lever, Ashby, and Workday.',
-      stack: ['Next.js', 'React', 'Neon PostgreSQL', 'OpenAI Realtime', 'Playwright', 'Browserbase', 'Vercel'],
+      summary: 'Early-career recruiting marketplace I co-founded and lead as CTO. Features AI voice onboarding, a multi-stage job matching pipeline, and resumable application automation for Greenhouse, Lever, Ashby, and Workday.',
+      stack: ['Next.js', 'React', 'TypeScript', 'Neon PostgreSQL', 'OpenAI Realtime', 'Playwright', 'Browserbase', 'Vercel'],
       status: 'Live',
       live: 'https://ambees.io',
       image: '/ambees.png',
@@ -201,9 +202,9 @@ export default function Home() {
   const skills = [
     'Python', 'Java', 'JavaScript', 'TypeScript', 'C++', 'Swift', 'SQL',
     'React', 'Next.js', 'SwiftUI', 'PostgreSQL', 'Prisma', 'REST APIs', 'D3.js', 'Playwright',
-    'OpenAI API', 'Gemini API', 'Groq API', 'RAG', 'AI Agents', 'PyTorch', 'HuggingFace Transformers', 'llama.cpp', 'NumPy', 'Jupyter',
+    'OpenAI API', 'Gemini API', 'Groq API', 'RAG', 'AI Agents', 'LLM Evaluation', 'PyTorch', 'HuggingFace Transformers', 'llama.cpp', 'NumPy', 'Jupyter',
     'Group Theory', 'Abstract Algebra', 'Game Theory', 'Linear Programming', 'Optimization',
-    'Data Structures', 'Algorithms', 'Git', 'LaTeX',
+    'Data Structures', 'Algorithms', 'Git', 'LaTeX', 'Vercel', 'Browserbase', 'Claude Code',
     'Problem Solving', 'Creative Thinking', 'Teamwork', 'Communication'
   ]
 
@@ -217,10 +218,10 @@ export default function Home() {
       current: true,
       link: 'https://ambees.io',
       bullets: [
-        'Built a full-stack early-career recruiting platform with Next.js, React, Neon PostgreSQL, and Vercel.',
-        'Developed AI voice onboarding and a multi-stage job matching system using OpenAI Realtime.',
-        'Engineered resumable application automation for Greenhouse, Lever, Ashby, and Workday with Playwright and Browserbase.',
-        'Completed the Summer Launch Incubator, refining the product through customer discovery and venture mentorship.',
+        'Built the full-stack platform end to end with Next.js, React, TypeScript, Neon PostgreSQL, and Vercel.',
+        'Shipped AI voice onboarding on OpenAI Realtime that feeds a multi-stage job matching pipeline.',
+        'Built resumable application automation for Greenhouse, Lever, Ashby, and Workday with Playwright and Browserbase.',
+        'Completed the Georgetown Summer Launch Incubator and pivoted to a recruiter marketplace after customer discovery.',
       ],
     },
     {
@@ -232,8 +233,10 @@ export default function Home() {
       location: 'Berkeley, CA',
       current: true,
       bullets: [
-        'Benchmarking course-deployed LLM tutors for Data 8, Data 100, and E127 on mistake identification, answer withholding, and actionability.',
-        'Building a Python benchmark that compares providers, RAG vs. raw PDF context, PDF-to-Markdown conversion, and token cost.',
+        'Designing LLM-as-a-judge scoring for Berkeley course tutors (Data 8, Data 100, E127), focusing on self-judge bias.',
+        "Measuring judge-human agreement with Cohen's kappa on OpenRouter and NRP models (Qwen3, gpt-oss).",
+        'Writing Python automated checks that flag answer leakage and missed student mistakes in tutor responses.',
+        'Read 10+ LLM tutor benchmarking papers (MRBench, MathTutorBench) and presented findings to the team.',
       ],
     },
     {
@@ -259,8 +262,8 @@ export default function Home() {
       location: 'Berkeley, CA',
       current: true,
       bullets: [
-        'Lead weekly review sessions for CS 88 students covering Python, recursion, and data abstraction.',
-        'Create video walkthroughs of past exam problems for current and future cohorts.',
+        'Lead weekly review sections for CS 88 students on Python, recursion, and data abstraction.',
+        'Record video walkthroughs of past exam problems used by current and future cohorts.',
       ],
     },
     {
@@ -274,7 +277,7 @@ export default function Home() {
       link: 'https://tlp-game.vercel.app',
       bullets: [
         'Investigated Nash equilibria in Brownian Boost tug-of-war games with resource allocation dynamics.',
-        'Built and deployed an interactive finite Trail of Lost Pennies game and analyzed human play traces with ABMN equations.',
+        'Built a web version of the finite game (Trail of Lost Pennies) and compared human play traces to ABMN equilibria.',
       ],
     },
     {
@@ -286,8 +289,8 @@ export default function Home() {
       location: 'Berkeley, CA',
       current: false,
       bullets: [
-        'Benchmarked small laptop-runnable models (Qwen, TinyLlama) using Python, HuggingFace Transformers, and llama.cpp.',
-        'Built Jupyter pipelines for accuracy, bias, and compute tradeoffs, and designed a RAG curriculum for a future Berkeley course.',
+        'Benchmarked small models (Qwen2.5, TinyLlama) on accuracy, bias, and compute with HuggingFace Transformers and llama.cpp.',
+        'Built Jupyter evaluation pipelines and designed a RAG curriculum module for a future Berkeley data science course.',
       ],
     },
     {
@@ -316,7 +319,7 @@ export default function Home() {
       description: "Pursuing a double major in Mathematics and Computer Science with focus on theoretical foundations and practical applications.",
       activities: [
         { title: "Computer Science Mentors", role: "Senior CS 88 Mentor", description: "Lead weekly review sessions and create exam video walkthroughs for CS 88 students." },
-        { title: "Data Discovery Program", role: "Undergraduate Researcher", description: "Benchmarking LLM tutors deployed in Berkeley data science courses." },
+        { title: "Data Discovery Program", role: "Undergraduate Researcher", description: "Evaluating LLM tutors deployed in Berkeley data science courses." },
       ],
       achievements: ["USAMO 2026 Grader", "HoyaHacks 3rd Place + Best Domain (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
       coursework: ["Math 104: Introduction to Real Analysis", "Compsci 188: Artificial Intelligence", "Math H53: Honors Multivariable Calculus", "Math 54: Linear Algebra & Differential Equations", "CS 70: Discrete Mathematics & Probability Theory", "CS 61B: Data Structures", "CS 61A: Structure & Interpretation of Computer Programs", "Data 8: Foundations of Data Science" ]
@@ -388,12 +391,13 @@ export default function Home() {
               <ScrambleText />
               <div className="mt-8 flex flex-wrap gap-4">
                 <MagneticButton onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>View Projects</MagneticButton>
-                <a href="/Yiran_cv-2.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/Yiran_Hu_Resume.pdf" target="_blank" rel="noopener noreferrer">
                   <MagneticButton variant="dark">
                     Download CV
                   </MagneticButton>
                 </a>
               </div>
+              <ResumeCounter />
               <div className="mt-6 flex gap-4">
                 {socialLinks.map(({ icon: Icon, href, label }) => (
                   <motion.a
@@ -482,7 +486,7 @@ export default function Home() {
                   In my free time, I enjoy playing Rubik's Cube, tennis, squash, and building tools.
                 </p>
                 <p className="text-sm leading-relaxed mb-4">
-                  This fall I lead engineering at Ambees, benchmark course-deployed LLM tutors with the Data Discovery Program,
+                  This fall I lead engineering at Ambees, evaluate course-deployed LLM tutors with the Data Discovery Program,
                   co-author papers on generative AI and organizations with Prof. Trinidad, and mentor CS 88 students through CSM.
                 </p>
                 <p className="text-sm leading-relaxed">
