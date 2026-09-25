@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Cpu, GitBranch, GraduationCap, Mail, Rocket, Github, Linkedin, ExternalLink, MapPin, Calendar, Award, Users, Heart, Coffee, Music, Gamepad2 } from 'lucide-react'
+import { Cpu, GitBranch, GraduationCap, Mail, Rocket, Github, Linkedin, ExternalLink, MapPin, Calendar, Award, Users, Heart, Coffee, Music, Gamepad2, Briefcase } from 'lucide-react'
 import { useState, useRef } from 'react'
 import Cursor from '@/components/Cursor'
 import MagneticButton from '@/components/MagneticButton'
 import Terminal from '@/components/Terminal'
 import ScrambleText from '@/components/ScrambleText'
+import ResumeCounter from '@/components/ResumeCounter'
 
 // Physics-based hover animation variants
 const hoverFloat = {
@@ -74,6 +75,18 @@ interface EducationEntry {
   coursework: string[]
 }
 
+interface ExperienceEntry {
+  title: string
+  org: string
+  type: 'Research' | 'Startup' | 'Teaching'
+  mentor?: string
+  duration: string
+  location: string
+  current: boolean
+  bullets: string[]
+  link?: string
+}
+
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
   const terminalNestRef = useRef<HTMLDivElement>(null)
@@ -95,19 +108,41 @@ export default function Home() {
 
   const projects: ProjectCard[] = [
     {
+      name: 'Ambees',
+      summary: 'Early-career recruiting marketplace I co-founded and lead as CTO. Features AI voice onboarding, a multi-stage job matching pipeline, and resumable application automation for Greenhouse, Lever, Ashby, and Workday.',
+      stack: ['Next.js', 'React', 'TypeScript', 'Neon PostgreSQL', 'OpenAI Realtime', 'Playwright', 'Browserbase', 'Vercel'],
+      status: 'Live',
+      live: 'https://ambees.io',
+      image: '/ambees.png',
+      featured: true,
+    },
+    {
+      name: 'bloop',
+      summary: "Privacy-first iOS app that tracks headphone sound exposure with HealthKit to protect children's hearing, with Gemini-powered listening analysis, alerts, Live Activities, and widgets. Won 3rd Place and Best Domain at HoyaHacks.",
+      stack: ['Swift', 'SwiftUI', 'HealthKit', 'Gemini API', 'WidgetKit'],
+      status: 'HoyaHacks 3rd Place',
+      github: 'https://github.com/YiranHu361/bloop',
+      live: 'https://bloopy.tech',
+      image: '/bloop.png',
+      featured: true,
+    },
+    {
       name: 'Mind Journal',
-      summary: 'AI-powered reflective companion that turns thoughts into insights through conversation and cognitive graph visualization.',
-      stack: ['Next.js 15', 'React 19', 'TypeScript', 'OpenAI API', 'D3.js', 'Prisma'],
+      summary: 'AI-powered reflective journaling platform with Socratic dialogue, cognitive graph visualization of recurring themes, and weekly insight summaries for personal growth.',
+      stack: ['Next.js 15', 'React 19', 'TypeScript', 'OpenAI API', 'D3.js', 'PostgreSQL'],
       status: 'Live',
       live: 'https://mindjournal.org',
       image: '/mindjournal.png',
       featured: true,
     },
     {
-      name: 'MRI Scan Detection',
-      summary: 'Automated MRI scan analysis system using machine learning models to assist medical diagnosis and streamline radiology workflows.',
-      stack: ['Python', 'TensorFlow', 'Computer Vision', 'Medical Imaging', 'CNN'],
-      status: 'In Progress',
+      name: 'Trail of Lost Pennies',
+      summary: 'Interactive tug-of-war game with Tullock contests and a Nash equilibrium AI opponent. Built with Prof. Alan Hammond to study human play in Brownian Boost games.',
+      stack: ['TypeScript', 'Game Theory', 'Nash Equilibria', 'Stochastic Games'],
+      status: 'Research',
+      github: 'https://github.com/YiranHu361/tlp-game',
+      live: 'https://tlp-game.vercel.app',
+      image: '/tlp-game.png',
       featured: true,
     },
     {
@@ -128,6 +163,20 @@ export default function Home() {
       live: '/MK_with_EST.pdf',
       image: '/MKpaper.png',
       featured: true,
+    },
+    {
+      name: 'TalkStorm',
+      summary: 'Real-time agentic AI mind map generator for lectures, using heap-based topic prioritization for sub-second latency.',
+      stack: ['JavaScript', 'Groq API', 'MindElixir', 'Real-time Processing'],
+      status: 'Complete',
+      featured: false,
+    },
+    {
+      name: 'MRI Scan Detection',
+      summary: 'Automated MRI scan analysis system using machine learning models to assist medical diagnosis and streamline radiology workflows.',
+      stack: ['Python', 'TensorFlow', 'Computer Vision', 'Medical Imaging', 'CNN'],
+      status: 'In Progress',
+      featured: false,
     },
     {
       name: 'Wordle Solver',
@@ -151,10 +200,111 @@ export default function Home() {
   ]
 
   const skills = [
-    'Java', 'C++', 'Python', 'TypeScript', 'React', 'Next.js',
-    'OpenAI API', 'Groq API', 'D3.js', 'Prisma', 'PostgreSQL',
-    'Group Theory', 'Abstract Algebra', 'Linear Programming', 'Optimization',
-    'Data Structures', 'Algorithms', 'Problem Solving', 'Creative Thinking', 'Teamwork', 'Communication'
+    'Python', 'Java', 'JavaScript', 'TypeScript', 'C++', 'Swift', 'SQL',
+    'React', 'Next.js', 'SwiftUI', 'PostgreSQL', 'Prisma', 'REST APIs', 'D3.js', 'Playwright',
+    'OpenAI API', 'Gemini API', 'Groq API', 'RAG', 'AI Agents', 'LLM Evaluation', 'PyTorch', 'HuggingFace Transformers', 'llama.cpp', 'NumPy', 'Jupyter',
+    'Group Theory', 'Abstract Algebra', 'Game Theory', 'Linear Programming', 'Optimization',
+    'Data Structures', 'Algorithms', 'Git', 'LaTeX', 'Vercel', 'Browserbase', 'Claude Code',
+    'Problem Solving', 'Creative Thinking', 'Teamwork', 'Communication'
+  ]
+
+  const experience: ExperienceEntry[] = [
+    {
+      title: 'Co-Founder & CTO',
+      org: 'Ambees',
+      type: 'Startup',
+      duration: 'Aug 2025 - Present',
+      location: 'Berkeley, CA',
+      current: true,
+      link: 'https://ambees.io',
+      bullets: [
+        'Built the full-stack platform end to end with Next.js, React, TypeScript, Neon PostgreSQL, and Vercel.',
+        'Shipped AI voice onboarding on OpenAI Realtime that feeds a multi-stage job matching pipeline.',
+        'Built resumable application automation for Greenhouse, Lever, Ashby, and Workday with Playwright and Browserbase.',
+        'Completed the Georgetown Summer Launch Incubator and pivoted to a recruiter marketplace after customer discovery.',
+      ],
+    },
+    {
+      title: 'LLM Tutors for All',
+      org: 'Data Discovery Program, UC Berkeley Data Science',
+      type: 'Research',
+      mentor: 'Project Lead // Edwin Vargas Navarro',
+      duration: 'Sep 2026 - Present',
+      location: 'Berkeley, CA',
+      current: true,
+      bullets: [
+        'Designing LLM-as-a-judge scoring for Berkeley course tutors (Data 8, Data 100, E127), focusing on self-judge bias.',
+        "Measuring judge-human agreement with Cohen's kappa on OpenRouter and NRP models (Qwen3, gpt-oss).",
+        'Writing Python automated checks that flag answer leakage and missed student mistakes in tutor responses.',
+        'Read 10+ LLM tutor benchmarking papers (MRBench, MathTutorBench) and presented findings to the team.',
+      ],
+    },
+    {
+      title: 'Undergraduate Research Apprentice',
+      org: 'UC Berkeley School of Education',
+      type: 'Research',
+      mentor: 'Mentor // Prof. Jose Eos Trinidad',
+      duration: 'Sep 2025 - Present',
+      location: 'Berkeley, CA',
+      current: true,
+      bullets: [
+        'Co-authoring two papers in preparation for Sociology Compass and Organization Theory.',
+        'Coauthored a 27-page policy paper analyzing how 12 large U.S. school districts govern generative AI.',
+        'Synthesized 30+ empirical studies on organizational structure and built a cross-sector case base for four human-AI work arrangements (tool, assistant, co-worker, supervisor).',
+        'Received a donor-funded $3,500 summer research stipend.',
+      ],
+    },
+    {
+      title: 'Senior CS 88 Mentor',
+      org: 'Computer Science Mentors (CSM)',
+      type: 'Teaching',
+      duration: 'Sep 2025 - Present',
+      location: 'Berkeley, CA',
+      current: true,
+      bullets: [
+        'Lead weekly review sections for CS 88 students on Python, recursion, and data abstraction.',
+        'Record video walkthroughs of past exam problems used by current and future cohorts.',
+      ],
+    },
+    {
+      title: 'Research Assistant',
+      org: 'UC Berkeley Department of Mathematics',
+      type: 'Research',
+      mentor: 'Advisor // Prof. Alan Hammond',
+      duration: 'Jan 2026 - May 2026',
+      location: 'Berkeley, CA',
+      current: false,
+      link: 'https://tlp-game.vercel.app',
+      bullets: [
+        'Investigated Nash equilibria in Brownian Boost tug-of-war games with resource allocation dynamics.',
+        'Built a web version of the finite game (Trail of Lost Pennies) and compared human play traces to ABMN equilibria.',
+      ],
+    },
+    {
+      title: 'Small Model Benchmarking',
+      org: 'Data Discovery Program, UC Berkeley Data Science',
+      type: 'Research',
+      mentor: 'Advisor // Eric Van Dusen',
+      duration: 'Jan 2026 - May 2026',
+      location: 'Berkeley, CA',
+      current: false,
+      bullets: [
+        'Benchmarked small models (Qwen2.5, TinyLlama) on accuracy, bias, and compute with HuggingFace Transformers and llama.cpp.',
+        'Built Jupyter evaluation pipelines and designed a RAG curriculum module for a future Berkeley data science course.',
+      ],
+    },
+    {
+      title: 'Research Fellow',
+      org: 'Stanford Mathematics Camp',
+      type: 'Research',
+      mentor: 'Focus // Abstract Algebra & Number Theory',
+      duration: 'Summer 2024',
+      location: 'Stanford, CA',
+      current: false,
+      bullets: [
+        "Formalized the Rubik's Cube CFOP method as a subgroup chain decomposition and authored a 15-page paper that received a top evaluation.",
+      ],
+    },
   ]
 
   const education: EducationEntry[] = [
@@ -163,15 +313,15 @@ export default function Home() {
       degree: "Bachelor of Arts",
       major: "Mathematics & Computer Science",
       location: "Berkeley, CA",
-      duration: "2025 - Present",
-      gpa: "3.95/4.0",
+      duration: "2025 - 2029 (Expected)",
+      gpa: "3.97/4.0",
       status: "Current Student",
       description: "Pursuing a double major in Mathematics and Computer Science with focus on theoretical foundations and practical applications.",
       activities: [
-        { title: "CSM Mentoring Program", role: "Senior Mentor", description: "Lead 2 weekly mentoring sessions for 12 students and provide video walkthroughs for exams for students in lower division CS courses." },
-        { title: "Social Science Research", role: "Student Researcher", description: "Working with Professor Trinidad, analyzing the behavior of students' AI use in STEM classes." },
+        { title: "Computer Science Mentors", role: "Senior CS 88 Mentor", description: "Lead weekly review sessions and create exam video walkthroughs for CS 88 students." },
+        { title: "Data Discovery Program", role: "Undergraduate Researcher", description: "Evaluating LLM tutors deployed in Berkeley data science courses." },
       ],
-      achievements: [],
+      achievements: ["USAMO 2026 Grader", "HoyaHacks 3rd Place + Best Domain (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
       coursework: ["Math 104: Introduction to Real Analysis", "Compsci 188: Artificial Intelligence", "Math H53: Honors Multivariable Calculus", "Math 54: Linear Algebra & Differential Equations", "CS 70: Discrete Mathematics & Probability Theory", "CS 61B: Data Structures", "CS 61A: Structure & Interpretation of Computer Programs", "Data 8: Foundations of Data Science" ]
     },
     {
@@ -234,18 +384,20 @@ export default function Home() {
                 <span className="block text-xl font-normal uppercase tracking-[0.4em]">Mathematician & Developer</span>
               </h1>
               <p className="mt-6 max-w-xl text-sm leading-relaxed">
-                Student at UC Berkeley pursuing Mathematics and Computer Science.
+                Math & CS student at UC Berkeley and Co-Founder & CTO of Ambees.
+                I research LLM tutors, stochastic games, and AI policy, and I ship products in Next.js and SwiftUI.
                 Rubik's Cube enthusiast, tennis player, and problem solver with a passion for algorithms and mathematical research.
               </p>
               <ScrambleText />
               <div className="mt-8 flex flex-wrap gap-4">
                 <MagneticButton onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>View Projects</MagneticButton>
-                <a href="/Yiran_cv-2.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/Yiran_Hu_Resume.pdf" target="_blank" rel="noopener noreferrer">
                   <MagneticButton variant="dark">
                     Download CV
                   </MagneticButton>
                 </a>
               </div>
+              <ResumeCounter />
               <div className="mt-6 flex gap-4">
                 {socialLinks.map(({ icon: Icon, href, label }) => (
                   <motion.a
@@ -333,6 +485,10 @@ export default function Home() {
                   I'm pursuing a degree in Mathematics and Computer Science at UC Berkeley.
                   In my free time, I enjoy playing Rubik's Cube, tennis, squash, and building tools.
                 </p>
+                <p className="text-sm leading-relaxed mb-4">
+                  This fall I lead engineering at Ambees, evaluate course-deployed LLM tutors with the Data Discovery Program,
+                  co-author papers on generative AI and organizations with Prof. Trinidad, and mentor CS 88 students through CSM.
+                </p>
                 <p className="text-sm leading-relaxed">
                   I love running, biking, and all kinds of racquet sports. I also love to play guitar; I especially enjoy Jay Chou's music.
                 </p>
@@ -369,6 +525,71 @@ export default function Home() {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Research & Experience Section */}
+        <section id="experience" className="mt-20">
+          <div className="mb-8 flex items-center gap-3 text-[10px] uppercase tracking-[0.5em]">
+            <Briefcase size={16} />
+            <span>Research & Experience</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {experience.map((item) => (
+              <motion.div
+                key={`${item.title}-${item.org}`}
+                className="border border-[#111] bg-[#f8f9fa] p-6 hard-shadow"
+                initial="rest"
+                whileHover="hover"
+                variants={hoverFloat}
+              >
+                <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.3em] mb-3">
+                  <span className="px-2 py-0.5 border border-[#7209b7] text-[#7209b7]">{item.type}</span>
+                  {item.current ? (
+                    <span className="flex items-center text-[#4cc9f0]">
+                      <span className="w-2 h-2 bg-[#4cc9f0] rounded-full mr-2 animate-pulse" />
+                      Current
+                    </span>
+                  ) : (
+                    <span>Completed</span>
+                  )}
+                </div>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-bold text-lg">{item.title}</h3>
+                  {item.link && (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#4cc9f0] hover:text-[#7209b7]" aria-label={`${item.title} link`}>
+                      <ExternalLink size={14} />
+                    </a>
+                  )}
+                </div>
+                <p className="text-[11px] uppercase tracking-[0.3em] text-[#7209b7]">{item.org}</p>
+                <div className="mt-3 flex flex-wrap gap-4 text-[10px] uppercase tracking-[0.3em]">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={12} />
+                    <span>{item.duration}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={12} />
+                    <span>{item.location}</span>
+                  </div>
+                </div>
+                {item.mentor && (
+                  <div className="mt-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em]">
+                    <Users size={12} />
+                    <span>{item.mentor}</span>
+                  </div>
+                )}
+                <ul className="mt-4 space-y-2">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-2 text-[11px] leading-relaxed">
+                      <span className="mt-1.5 w-1.5 h-1.5 bg-[#4cc9f0] rounded-full flex-shrink-0" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </section>
 

@@ -83,7 +83,7 @@ const Hero = () => {
               View My Work
             </motion.button>
             <motion.a
-              href="/Yiran Hu - Resume.pdf"
+              href="/Yiran_Hu_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

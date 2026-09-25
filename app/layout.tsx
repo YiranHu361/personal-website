@@ -9,12 +9,12 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: 'Yiran Hu - Personal Website',
-  description: 'Personal website showcasing projects, skills, and experience',
-  keywords: ['portfolio', 'developer', 'designer', 'personal website'],
+  description: 'Yiran Hu is a UC Berkeley Math & CS student, Co-Founder & CTO of Ambees, and researcher working on LLM tutors, stochastic games, and AI policy.',
+  keywords: ['Yiran Hu', 'UC Berkeley', 'mathematics', 'computer science', 'Ambees', 'AI', 'LLM tutors', 'research', 'portfolio'],
   authors: [{ name: 'Yiran Hu' }],
   openGraph: {
     title: 'Yiran Hu - Personal Website',
-    description: 'Personal website showcasing projects, skills, and experience',
+    description: 'UC Berkeley Math & CS student, Co-Founder & CTO of Ambees, and researcher working on LLM tutors, stochastic games, and AI policy.',
     type: 'website',
   },
 }
