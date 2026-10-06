@@ -146,6 +146,22 @@ export default function Home() {
       featured: true,
     },
     {
+      name: "Rubik's Cube Solver",
+      summary: "3x3 solver in C++ using Kociemba's two-phase algorithm, with IDA* search over cosets of subgroup G1, coordinate move tables, and 5 BFS-built pruning tables. Solves 1,000 random cubes in 20.5 moves on average at 3.2 ms each, verified by 4.8M unit checks. Started as a 2x2 solver with BFS and hashing.",
+      stack: ['C++', 'Group Theory', 'Permutation Groups', 'IDA* Search', 'BFS'],
+      status: 'Complete',
+      github: 'https://github.com/YiranHu361/Rubik-s-Cube-Solver',
+      image: '/rubikscube2.png',
+      featured: true,
+    },
+    {
+      name: 'Kalshi Tennis Trading Bot',
+      summary: 'Live trading bot for ATP tennis contracts on Kalshi, pricing matches with a hierarchical Markov model (point, game, set, match). Adds leverage and EWMA momentum signals with regime-based maker-only quoting and per-match inventory caps.',
+      stack: ['Python', 'Markov Chains', 'Kalshi API', 'ATP Tennis API', 'Real-time Data'],
+      status: 'Complete',
+      featured: true,
+    },
+    {
       name: "Mathematics behind Rubik's Cube",
       summary: "Mathematical Foundations and Group Theory Applications in the CFOP Method for Solving Rubik's Cube.",
       stack: ['Group Theory', 'Conjugation', 'Commutators', 'Abstract Algebra'],
@@ -186,15 +202,6 @@ export default function Home() {
       github: 'https://github.com/YiranHu361/wordle_solver',
       live: '/wordle-solver',
       image: '/wordle.png',
-      featured: false,
-    },
-    {
-      name: "Rubik's Cube Solver",
-      summary: "A recursive solver for 2x2x2 Rubik's Cube, implemented in C++.",
-      stack: ['Complete Search', 'Permutation', 'Recursion'],
-      status: 'Complete',
-      github: 'https://github.com/YiranHu361/Rubik-s-Cube-Solver/',
-      image: '/rubikscube2.png',
       featured: false,
     },
   ]
@@ -321,7 +328,7 @@ export default function Home() {
         { title: "Computer Science Mentors", role: "Senior CS 88 Mentor", description: "Lead weekly review sessions and create exam video walkthroughs for CS 88 students." },
         { title: "Data Discovery Program", role: "Undergraduate Researcher", description: "Evaluating LLM tutors deployed in Berkeley data science courses." },
       ],
-      achievements: ["USAMO 2026 Grader", "HoyaHacks 3rd Place + Best Domain (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
+      achievements: ["UC Berkeley ICPC Team (2026)", "USAMO 2026 Grader", "HoyaHacks 3rd Place + Best Domain (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
       coursework: ["Math 104: Introduction to Real Analysis", "Compsci 188: Artificial Intelligence", "Math H53: Honors Multivariable Calculus", "Math 54: Linear Algebra & Differential Equations", "CS 70: Discrete Mathematics & Probability Theory", "CS 61B: Data Structures", "CS 61A: Structure & Interpretation of Computer Programs", "Data 8: Foundations of Data Science" ]
     },
     {
@@ -339,7 +346,7 @@ export default function Home() {
         { title: "Tennis Team", role: "Captain", description: "Competed on varsity, played 3rd singles and 1st doubles." },
         { title: "Squash Team", role: "Player", description: "Won 2024 New England Squash League High School Boys Team Division III Championship." },
       ],
-      achievements: ["Cum Laude Society", "The John Suydam Mathematics Prize", "USAJMO Qualifier; AIME score 12", "USACO Platinum Division"],
+      achievements: ["Cum Laude Society", "The John Suydam Mathematics Prize", "USAMO Qualifier; AIME score 12", "USACO Platinum Division"],
       coursework: ["Advanced Calculus BC", "Advanced Topics in CS: Data Structures & Algorithms", "Advanced Statistics", "Advanced Physics C: Mechanics", "Advanced Physics C: E&M", "Advanced Topics in Math: Probability", "Advanced Topics in Math: Heuristics", "Advanced Topics in Math: Multivariable Calculus", "Advanced Topics in Math: Differential Equations"]
     }
   ]
