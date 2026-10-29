@@ -118,7 +118,7 @@ export default function Home() {
     },
     {
       name: 'bloop',
-      summary: "Privacy-first iOS app that tracks headphone sound exposure with HealthKit to protect children's hearing, with Gemini-powered listening analysis, alerts, Live Activities, and widgets. Won 3rd Place and Best Domain at HoyaHacks.",
+      summary: "Privacy-first iOS app that tracks headphone sound exposure with HealthKit to protect children's hearing, with Gemini-powered listening analysis, alerts, Live Activities, and widgets.",
       stack: ['Swift', 'SwiftUI', 'HealthKit', 'Gemini API', 'WidgetKit'],
       status: 'HoyaHacks 3rd Place',
       github: 'https://github.com/YiranHu361/bloop',
@@ -137,13 +137,11 @@ export default function Home() {
     },
     {
       name: 'Clarity Brain',
-      summary: 'ML tool for MRI brain scan screening. Trained a CNN on 4,600 scans (99.3% accuracy). Built for my mother, a radiologist, increasing her throughput from ~30 to ~80 scans/day. Now accessible to other radiologists online.',
+      summary: 'A simple ML app I built for my mom, a radiologist: a CNN that looks at MRI brain scans and flags ones that may need a closer look. A small side project for learning how to train and deploy an image model.',
       stack: ['Python', 'PyTorch', 'CNN', 'ONNX', 'Next.js', 'Medical Imaging'],
-      status: 'Live',
+      status: 'Side project',
       github: 'https://github.com/YiranHu361/brainclarity',
-      live: 'https://claritybrain.org',
-      image: '/claritybrain.png',
-      featured: true,
+      featured: false,
     },
     {
       name: 'Trail of Lost Pennies',
@@ -166,25 +164,25 @@ export default function Home() {
     },
     {
       name: 'Kalshi Tennis Trading Bot',
-      summary: 'Live trading bot for ATP tennis contracts on Kalshi, pricing matches with a hierarchical Markov model (point, game, set, match). Adds leverage and EWMA momentum signals with regime-based maker-only quoting and per-match inventory caps.',
+      summary: 'Experimental trading bot for ATP tennis contracts on Kalshi, pricing matches with a hierarchical Markov model (point, game, set, match), with EWMA momentum signals, maker-only quoting and per-match inventory caps. I traded real money with it for one week at the minimum stake, and $30 grew to $50 (a few cents per trade).',
       stack: ['Python', 'Markov Chains', 'Kalshi API', 'ATP Tennis API', 'Real-time Data'],
       status: 'Complete',
       featured: true,
     },
     {
       name: "Mathematics behind Rubik's Cube",
-      summary: "Mathematical Foundations and Group Theory Applications in the CFOP Method for Solving Rubik's Cube.",
+      summary: "20-page paper on the CFOP method as a subgroup chain decomposition, written as a research fellow at the Stanford University Mathematics Camp (SUMaC). Posted on Questioz.",
       stack: ['Group Theory', 'Conjugation', 'Commutators', 'Abstract Algebra'],
-      status: 'Published',
+      status: 'SUMaC 2024',
       live: 'https://www.questioz.org/post/mathematical-foundations-and-group-theory-applications-in-the-cfop-method-for-solving-rubik-s-cube',
       image: '/Rubiks Cube.png',
       featured: true,
     },
     {
       name: "Modified Kruskal's Algorithm",
-      summary: "Research paper on algorithmic optimization combining Kruskal's algorithm with Steiner tree construction.",
+      summary: "Unpublished manuscript (second of six authors) on electricity grid design, combining Kruskal's algorithm with Euclidean Steiner tree construction.",
       stack: ['Graph Theory', 'Linear Programming', 'Optimization', 'Steiner Trees'],
-      status: 'Published',
+      status: 'Unpublished manuscript',
       github: 'https://github.com/YiranHu361/steiner_region_construction',
       live: '/MK_with_EST.pdf',
       image: '/MKpaper.png',
@@ -236,11 +234,24 @@ export default function Home() {
       ],
     },
     {
+      title: 'Undergraduate Researcher',
+      org: 'UC Berkeley Sky Computing Lab',
+      type: 'Research',
+      mentor: 'Mentor // Qiuyang Mang (FrontierCS)',
+      duration: 'Oct 2026 - Present',
+      location: 'Berkeley, CA',
+      current: true,
+      bullets: [
+        'Research on multi-agent LLM systems with the FrontierCS group, studying whether letting teams of LLM coding agents communicate helps them beat a single agent at the same token budget.',
+        'Built the FrontierCS 2.0 task pipeline for our multi-agent harness (Codex, DeepSeek).',
+      ],
+    },
+    {
       title: 'LLM Tutors for All',
       org: 'Data Discovery Program, UC Berkeley Data Science',
       type: 'Research',
       mentor: 'Project Lead // Edwin Vargas Navarro',
-      duration: 'Sep 2026 - Present',
+      duration: 'Sep 2026 - Dec 2026',
       location: 'Berkeley, CA',
       current: true,
       bullets: [
@@ -255,12 +266,12 @@ export default function Home() {
       org: 'UC Berkeley School of Education',
       type: 'Research',
       mentor: 'Mentor // Prof. Jose Eos Trinidad',
-      duration: 'Sep 2025 - Present',
+      duration: 'Sep 2025 - Dec 2026',
       location: 'Berkeley, CA',
       current: true,
       bullets: [
         'Co-authoring two papers in preparation for Sociology Compass and Organization Theory.',
-        'Coauthored a 27-page policy paper analyzing how 12 large U.S. school districts govern generative AI.',
+        'Coauthored a 27-page paper on how the 12 largest U.S. school districts govern generative AI, published in Educational Policy (second author).',
         'Synthesized 30+ empirical studies on organizational structure and built a cross-sector case base for four human-AI work arrangements (tool, assistant, co-worker, supervisor).',
         'Received a donor-funded $3,500 summer research stipend.',
       ],
@@ -269,7 +280,7 @@ export default function Home() {
       title: 'Senior CS 88 Mentor',
       org: 'Computer Science Mentors (CSM)',
       type: 'Teaching',
-      duration: 'Sep 2025 - Present',
+      duration: 'Sep 2025 - Dec 2026',
       location: 'Berkeley, CA',
       current: true,
       bullets: [
@@ -313,7 +324,7 @@ export default function Home() {
       location: 'Stanford, CA',
       current: false,
       bullets: [
-        "Formalized the Rubik's Cube CFOP method as a subgroup chain decomposition and authored a 15-page paper that received a top evaluation.",
+        "Formalized the Rubik's Cube CFOP method as a subgroup chain decomposition and authored a 20-page paper that received a top evaluation.",
       ],
     },
   ]
@@ -332,7 +343,7 @@ export default function Home() {
         { title: "Computer Science Mentors", role: "Senior CS 88 Mentor", description: "Lead weekly review sessions and create exam video walkthroughs for CS 88 students." },
         { title: "Data Discovery Program", role: "Undergraduate Researcher", description: "Evaluating LLM tutors deployed in Berkeley data science courses." },
       ],
-      achievements: ["UC Berkeley ICPC Team (2026)", "USAMO 2026 Grader", "HoyaHacks 3rd Place + Best Domain (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
+      achievements: ["USAMO 2026 Grader", "HoyaHacks 3rd Place (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
       coursework: ["Math 104: Introduction to Real Analysis", "Compsci 188: Artificial Intelligence", "Math H53: Honors Multivariable Calculus", "Math 54: Linear Algebra & Differential Equations", "CS 70: Discrete Mathematics & Probability Theory", "CS 61B: Data Structures", "CS 61A: Structure & Interpretation of Computer Programs", "Data 8: Foundations of Data Science" ]
     },
     {
@@ -497,8 +508,9 @@ export default function Home() {
                   In my free time, I enjoy playing Rubik's Cube, tennis, squash, and building tools.
                 </p>
                 <p className="text-sm leading-relaxed mb-4">
-                  This fall I lead engineering at Ambees, evaluate course-deployed LLM tutors with the Data Discovery Program,
-                  co-author papers on generative AI and organizations with Prof. Trinidad, and mentor CS 88 students through CSM.
+                  This fall I lead engineering at Ambees, study multi-agent LLM coding systems in the Sky Computing Lab,
+                  evaluate course-deployed LLM tutors with the Data Discovery Program, co-author papers on generative AI and organizations with Prof. Trinidad,
+                  and mentor CS 88 students through CSM.
                 </p>
                 <p className="text-sm leading-relaxed">
                   I love running, biking, and all kinds of racquet sports. I also love to play guitar; I especially enjoy Jay Chou's music.
