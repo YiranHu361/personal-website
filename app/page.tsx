@@ -137,9 +137,9 @@ export default function Home() {
     },
     {
       name: 'Clarity Brain',
-      summary: 'ML tool for MRI brain scan screening. Trained a CNN on 4,600 scans (99.3% accuracy). Built for my mother, a radiologist, increasing her throughput from ~30 to ~80 scans/day. Now accessible to other radiologists online.',
+      summary: 'A simple ML app I built for my mom, a radiologist: a CNN that looks at MRI brain scans and flags ones that may need a closer look. A small side project for learning how to train and deploy an image model.',
       stack: ['Python', 'PyTorch', 'CNN', 'ONNX', 'Next.js', 'Medical Imaging'],
-      status: 'Live',
+      status: 'Side project',
       github: 'https://github.com/YiranHu361/brainclarity',
       live: 'https://claritybrain.org',
       image: '/claritybrain.png',
@@ -166,7 +166,7 @@ export default function Home() {
     },
     {
       name: 'Kalshi Tennis Trading Bot',
-      summary: 'Live trading bot for ATP tennis contracts on Kalshi, pricing matches with a hierarchical Markov model (point, game, set, match). Adds leverage and EWMA momentum signals with regime-based maker-only quoting and per-match inventory caps.',
+      summary: 'Experimental trading bot for ATP tennis contracts on Kalshi, pricing matches with a hierarchical Markov model (point, game, set, match), with EWMA momentum signals, maker-only quoting and per-match inventory caps. I tested it live for one week at minimum stakes: $30 grew to $50, a few cents per trade.',
       stack: ['Python', 'Markov Chains', 'Kalshi API', 'ATP Tennis API', 'Real-time Data'],
       status: 'Complete',
       featured: true,
@@ -260,7 +260,7 @@ export default function Home() {
       current: true,
       bullets: [
         'Co-authoring two papers in preparation for Sociology Compass and Organization Theory.',
-        'Coauthored a 27-page policy paper analyzing how 12 large U.S. school districts govern generative AI.',
+        'Coauthored a 27-page paper on how the 12 largest U.S. school districts govern generative AI, published in Educational Policy (second author).',
         'Synthesized 30+ empirical studies on organizational structure and built a cross-sector case base for four human-AI work arrangements (tool, assistant, co-worker, supervisor).',
         'Received a donor-funded $3,500 summer research stipend.',
       ],
