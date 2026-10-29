@@ -182,9 +182,9 @@ export default function Home() {
     },
     {
       name: "Modified Kruskal's Algorithm",
-      summary: "Research paper on algorithmic optimization combining Kruskal's algorithm with Steiner tree construction.",
+      summary: "Unpublished manuscript (second of six authors) on electricity grid design, combining Kruskal's algorithm with Euclidean Steiner tree construction.",
       stack: ['Graph Theory', 'Linear Programming', 'Optimization', 'Steiner Trees'],
-      status: 'Published',
+      status: 'Unpublished manuscript',
       github: 'https://github.com/YiranHu361/steiner_region_construction',
       live: '/MK_with_EST.pdf',
       image: '/MKpaper.png',
@@ -240,7 +240,7 @@ export default function Home() {
       org: 'Data Discovery Program, UC Berkeley Data Science',
       type: 'Research',
       mentor: 'Project Lead // Edwin Vargas Navarro',
-      duration: 'Sep 2026 - Present',
+      duration: 'Sep 2026 - Dec 2026',
       location: 'Berkeley, CA',
       current: true,
       bullets: [
@@ -255,7 +255,7 @@ export default function Home() {
       org: 'UC Berkeley School of Education',
       type: 'Research',
       mentor: 'Mentor // Prof. Jose Eos Trinidad',
-      duration: 'Sep 2025 - Present',
+      duration: 'Sep 2025 - Dec 2026',
       location: 'Berkeley, CA',
       current: true,
       bullets: [
@@ -269,7 +269,7 @@ export default function Home() {
       title: 'Senior CS 88 Mentor',
       org: 'Computer Science Mentors (CSM)',
       type: 'Teaching',
-      duration: 'Sep 2025 - Present',
+      duration: 'Sep 2025 - Dec 2026',
       location: 'Berkeley, CA',
       current: true,
       bullets: [
