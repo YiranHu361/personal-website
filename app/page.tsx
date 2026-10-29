@@ -109,8 +109,8 @@ export default function Home() {
   const projects: ProjectCard[] = [
     {
       name: 'Ambees',
-      summary: 'Early-career recruiting marketplace I co-founded and lead as CTO. Features AI voice onboarding, a multi-stage job matching pipeline, and resumable application automation for Greenhouse, Lever, Ashby, and Workday.',
-      stack: ['Next.js', 'React', 'TypeScript', 'Neon PostgreSQL', 'OpenAI Realtime', 'Playwright', 'Browserbase', 'Vercel'],
+      summary: 'We help small companies hire college students through a 10-minute AI conversation, not a resume. I built the voice interviewer students onboard with and the ranker that vets candidates for recruiters.',
+      stack: ['Next.js', 'React', 'TypeScript', 'Neon PostgreSQL', 'OpenAI Realtime', 'LLM Agents', 'Vercel'],
       status: 'Live',
       live: 'https://ambees.io',
       image: '/ambees.png',
@@ -133,6 +133,16 @@ export default function Home() {
       status: 'Live',
       live: 'https://mindjournal.org',
       image: '/mindjournal.png',
+      featured: true,
+    },
+    {
+      name: 'Clarity Brain',
+      summary: 'ML tool for MRI brain scan screening. Trained a CNN on 4,600 scans (99.3% accuracy). Built for my mother, a radiologist, increasing her throughput from ~30 to ~80 scans/day. Now accessible to other radiologists online.',
+      stack: ['Python', 'PyTorch', 'CNN', 'ONNX', 'Next.js', 'Medical Imaging'],
+      status: 'Live',
+      github: 'https://github.com/YiranHu361/brainclarity',
+      live: 'https://claritybrain.org',
+      image: '/claritybrain.png',
       featured: true,
     },
     {
@@ -188,13 +198,6 @@ export default function Home() {
       featured: false,
     },
     {
-      name: 'MRI Scan Detection',
-      summary: 'Automated MRI scan analysis system using machine learning models to assist medical diagnosis and streamline radiology workflows.',
-      stack: ['Python', 'TensorFlow', 'Computer Vision', 'Medical Imaging', 'CNN'],
-      status: 'In Progress',
-      featured: false,
-    },
-    {
       name: 'Wordle Solver',
       summary: 'A Java-based Wordle solver with intelligent heuristics and strategic word selection algorithms.',
       stack: ['Java', 'Data Structures', 'Heuristics', 'Algorithm Design'],
@@ -211,7 +214,7 @@ export default function Home() {
     'React', 'Next.js', 'SwiftUI', 'PostgreSQL', 'Prisma', 'REST APIs', 'D3.js', 'Playwright',
     'OpenAI API', 'Gemini API', 'Groq API', 'RAG', 'AI Agents', 'LLM Evaluation', 'PyTorch', 'HuggingFace Transformers', 'llama.cpp', 'NumPy', 'Jupyter',
     'Group Theory', 'Abstract Algebra', 'Game Theory', 'Linear Programming', 'Optimization',
-    'Data Structures', 'Algorithms', 'Git', 'LaTeX', 'Vercel', 'Browserbase', 'Claude Code',
+    'Data Structures', 'Algorithms', 'Git', 'LaTeX', 'Vercel', 'Claude Code',
     'Problem Solving', 'Creative Thinking', 'Teamwork', 'Communication'
   ]
 
@@ -225,9 +228,10 @@ export default function Home() {
       current: true,
       link: 'https://ambees.io',
       bullets: [
-        'Built the full-stack platform end to end with Next.js, React, TypeScript, Neon PostgreSQL, and Vercel.',
-        'Shipped AI voice onboarding on OpenAI Realtime that feeds a multi-stage job matching pipeline.',
-        'Built resumable application automation for Greenhouse, Lever, Ashby, and Workday with Playwright and Browserbase.',
+        'We help small companies hire college students through a 10-minute AI conversation, not a resume.',
+        'Built the product end to end with Next.js, React, TypeScript, Neon PostgreSQL, and Vercel.',
+        'Built the AI voice interviewer on OpenAI Realtime that runs the 10-minute onboarding conversation and feeds the matching pipeline.',
+        "Rebuilt candidate vetting so an LLM turns a recruiter's ask into structured criteria, a deterministic ranker scores every candidate, and a second model checks the top 12. Every ranking change must pass a test set of synthetic candidates, including decoys and keyword-stuffers, before it ships.",
         'Completed the Georgetown Summer Launch Incubator and pivoted to a recruiter marketplace after customer discovery.',
       ],
     },
@@ -320,7 +324,7 @@ export default function Home() {
       degree: "Bachelor of Arts",
       major: "Mathematics & Computer Science",
       location: "Berkeley, CA",
-      duration: "2025 - 2029 (Expected)",
+      duration: "2025 - May 2029 (Expected)",
       gpa: "3.97/4.0",
       status: "Current Student",
       description: "Pursuing a double major in Mathematics and Computer Science with focus on theoretical foundations and practical applications.",
@@ -385,7 +389,7 @@ export default function Home() {
 
             {/* Name and Info */}
             <div>
-              <p className="text-[11px] uppercase tracking-[0.6em] text-[#7209b7]">UC Berkeley // Math & CS</p>
+              <p className="text-[11px] uppercase tracking-[0.6em] text-[#7209b7]">UC Berkeley // Math & CS // Class of 2029</p>
               <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                 Yiran Hu
                 <span className="block text-xl font-normal uppercase tracking-[0.4em]">Mathematician & Developer</span>
