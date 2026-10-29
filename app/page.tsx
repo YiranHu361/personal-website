@@ -118,7 +118,7 @@ export default function Home() {
     },
     {
       name: 'bloop',
-      summary: "Privacy-first iOS app that tracks headphone sound exposure with HealthKit to protect children's hearing, with Gemini-powered listening analysis, alerts, Live Activities, and widgets. Won 3rd Place and Best Domain at HoyaHacks.",
+      summary: "Privacy-first iOS app that tracks headphone sound exposure with HealthKit to protect children's hearing, with Gemini-powered listening analysis, alerts, Live Activities, and widgets.",
       stack: ['Swift', 'SwiftUI', 'HealthKit', 'Gemini API', 'WidgetKit'],
       status: 'HoyaHacks 3rd Place',
       github: 'https://github.com/YiranHu361/bloop',
@@ -141,9 +141,7 @@ export default function Home() {
       stack: ['Python', 'PyTorch', 'CNN', 'ONNX', 'Next.js', 'Medical Imaging'],
       status: 'Side project',
       github: 'https://github.com/YiranHu361/brainclarity',
-      live: 'https://claritybrain.org',
-      image: '/claritybrain.png',
-      featured: true,
+      featured: false,
     },
     {
       name: 'Trail of Lost Pennies',
@@ -173,9 +171,9 @@ export default function Home() {
     },
     {
       name: "Mathematics behind Rubik's Cube",
-      summary: "Mathematical Foundations and Group Theory Applications in the CFOP Method for Solving Rubik's Cube.",
+      summary: "20-page paper on the CFOP method as a subgroup chain decomposition, written as a research fellow at the Stanford University Mathematics Camp (SUMaC). Posted on Questioz.",
       stack: ['Group Theory', 'Conjugation', 'Commutators', 'Abstract Algebra'],
-      status: 'Published',
+      status: 'SUMaC 2024',
       live: 'https://www.questioz.org/post/mathematical-foundations-and-group-theory-applications-in-the-cfop-method-for-solving-rubik-s-cube',
       image: '/Rubiks Cube.png',
       featured: true,
@@ -233,6 +231,19 @@ export default function Home() {
         'Built the AI voice interviewer on OpenAI Realtime that runs the 10-minute onboarding conversation and feeds the matching pipeline.',
         "Rebuilt candidate vetting so an LLM turns a recruiter's ask into structured criteria, a deterministic ranker scores every candidate, and a second model checks the top 12. Every ranking change must pass a test set of synthetic candidates, including decoys and keyword-stuffers, before it ships.",
         'Completed the Georgetown Summer Launch Incubator and pivoted to a recruiter marketplace after customer discovery.',
+      ],
+    },
+    {
+      title: 'Undergraduate Researcher',
+      org: 'UC Berkeley Sky Computing Lab',
+      type: 'Research',
+      mentor: 'Mentor // Qiuyang Mang (FrontierCS)',
+      duration: 'Oct 2026 - Present',
+      location: 'Berkeley, CA',
+      current: true,
+      bullets: [
+        'Research on multi-agent LLM systems with the FrontierCS group, studying whether letting teams of LLM coding agents communicate helps them beat a single agent at the same token budget.',
+        'Built the FrontierCS 2.0 task pipeline for our multi-agent harness (Codex, DeepSeek).',
       ],
     },
     {
@@ -313,7 +324,7 @@ export default function Home() {
       location: 'Stanford, CA',
       current: false,
       bullets: [
-        "Formalized the Rubik's Cube CFOP method as a subgroup chain decomposition and authored a 15-page paper that received a top evaluation.",
+        "Formalized the Rubik's Cube CFOP method as a subgroup chain decomposition and authored a 20-page paper that received a top evaluation.",
       ],
     },
   ]
@@ -332,7 +343,7 @@ export default function Home() {
         { title: "Computer Science Mentors", role: "Senior CS 88 Mentor", description: "Lead weekly review sessions and create exam video walkthroughs for CS 88 students." },
         { title: "Data Discovery Program", role: "Undergraduate Researcher", description: "Evaluating LLM tutors deployed in Berkeley data science courses." },
       ],
-      achievements: ["UC Berkeley ICPC Team (2026)", "USAMO 2026 Grader", "HoyaHacks 3rd Place + Best Domain (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
+      achievements: ["USAMO 2026 Grader", "HoyaHacks 3rd Place (bloop)", "Donor-Funded $3,500 Summer Research Stipend"],
       coursework: ["Math 104: Introduction to Real Analysis", "Compsci 188: Artificial Intelligence", "Math H53: Honors Multivariable Calculus", "Math 54: Linear Algebra & Differential Equations", "CS 70: Discrete Mathematics & Probability Theory", "CS 61B: Data Structures", "CS 61A: Structure & Interpretation of Computer Programs", "Data 8: Foundations of Data Science" ]
     },
     {
@@ -497,8 +508,9 @@ export default function Home() {
                   In my free time, I enjoy playing Rubik's Cube, tennis, squash, and building tools.
                 </p>
                 <p className="text-sm leading-relaxed mb-4">
-                  This fall I lead engineering at Ambees, evaluate course-deployed LLM tutors with the Data Discovery Program,
-                  co-author papers on generative AI and organizations with Prof. Trinidad, and mentor CS 88 students through CSM.
+                  This fall I lead engineering at Ambees, study multi-agent LLM coding systems in the Sky Computing Lab,
+                  evaluate course-deployed LLM tutors with the Data Discovery Program, co-author papers on generative AI and organizations with Prof. Trinidad,
+                  and mentor CS 88 students through CSM.
                 </p>
                 <p className="text-sm leading-relaxed">
                   I love running, biking, and all kinds of racquet sports. I also love to play guitar; I especially enjoy Jay Chou's music.
