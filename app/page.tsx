@@ -166,7 +166,7 @@ export default function Home() {
     },
     {
       name: 'Kalshi Tennis Trading Bot',
-      summary: 'Experimental trading bot for ATP tennis contracts on Kalshi, pricing matches with a hierarchical Markov model (point, game, set, match), with EWMA momentum signals, maker-only quoting and per-match inventory caps. I tested it live for one week at minimum stakes: $30 grew to $50, a few cents per trade.',
+      summary: 'Experimental trading bot for ATP tennis contracts on Kalshi, pricing matches with a hierarchical Markov model (point, game, set, match), with EWMA momentum signals, maker-only quoting and per-match inventory caps. I traded real money with it for one week at the minimum stake, and $30 grew to $50 (a few cents per trade).',
       stack: ['Python', 'Markov Chains', 'Kalshi API', 'ATP Tennis API', 'Real-time Data'],
       status: 'Complete',
       featured: true,
